@@ -1,0 +1,12 @@
+[versions]
+org-jetbrains-kotlin = "1.9.23"
+android-gradle-plugin = "8.4.2"
+gradle-plugin-publish = "1.2.1"
+
+[libraries]
+# Dependencies of the included build-logic
+android-tools-build = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle-plugin" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
+
+[plugins]
+gradle-plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "gradle-plugin-publish" }
