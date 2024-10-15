@@ -38,6 +38,22 @@ gradlePlugin {
             implementationClass =
                 "com.camouflage.convention.plugins.android.AndroidApplicationComposeConventionPlugin"
         }
+        register("androidLibrary") {
+            id = "android.library"
+            displayName = "Android Library Plugin"
+            description = "This Plugin is for Android Library Configuration"
+            tags = listOf("android", "library", "configuration", "plugin")
+            implementationClass =
+                "com.camouflage.convention.plugins.android.AndroidLibraryConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "android.library.compose"
+            displayName = "Android Library Compose Plugin"
+            description = "This Plugin is for Android Library with Compose Configuration"
+            tags = listOf("android", "library", "configuration", "compose", "plugin")
+            implementationClass =
+                "com.camouflage.convention.plugins.android.AndroidLibraryComposeConventionPlugin"
+        }
         register("publication") {
             id = "kotlin.publication"
             displayName = "Maven Publication Configuration Plugin"
