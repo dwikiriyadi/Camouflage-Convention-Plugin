@@ -1,0 +1,1 @@
+# camouflage-convention-plugin
