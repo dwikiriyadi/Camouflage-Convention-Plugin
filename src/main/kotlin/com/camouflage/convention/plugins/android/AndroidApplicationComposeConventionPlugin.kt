@@ -21,9 +21,6 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
                     libs.findVersion("targetSdk").ifPresent {
                         targetSdk = it.requiredVersion.toInt()
                     }
-                    libs.findVersion("versionCode").ifPresent {
-                        versionCode = it.requiredVersion.toInt()
-                    }
                 }
             }
 
