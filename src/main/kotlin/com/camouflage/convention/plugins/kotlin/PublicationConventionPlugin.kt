@@ -37,7 +37,6 @@ class PublicationConventionPlugin : Plugin<Project> {
 
                         create("release", MavenPublication::class.java) {
                             artifact(tasks["bundleReleaseAar"])
-                            components.getByName("release")
                             groupId = configGroupId
                             artifactId = configArtifactId
                             version = configVersion
@@ -53,27 +52,8 @@ class PublicationConventionPlugin : Plugin<Project> {
                                 }
                             }
                         }
-                        create("staging", MavenPublication::class.java) {
-                            artifact(tasks["bundleStagingAar"])
-                            components.getByName("staging")
-                            groupId = configGroupId
-                            artifactId = "$configArtifactId-staging"
-                            version = configVersion
-                            pom.withXml {
-                                val dependenciesNode = asNode().appendNode("dependencies")
-
-                                configurations["api"].allDependencies.forEach {
-                                    val dependencyNode =
-                                        dependenciesNode.appendNode("dependency")
-                                    dependencyNode.appendNode("groupId", it.group)
-                                    dependencyNode.appendNode("artifactId", it.name)
-                                    dependencyNode.appendNode("version", it.version)
-                                }
-                            }
-                        }
                         create("debug", MavenPublication::class.java) {
                             artifact(tasks["bundleDebugAar"])
-                            components.getByName("debug")
                             groupId = configGroupId
                             artifactId = "$configArtifactId-debug"
                             version = configVersion
@@ -87,17 +67,6 @@ class PublicationConventionPlugin : Plugin<Project> {
                                     dependencyNode.appendNode("artifactId", it.name)
                                     dependencyNode.appendNode("version", it.version)
                                 }
-                            }
-                        }
-                    }
-
-                    repositories {
-                        maven {
-                            name = "nexus"
-                            url = uri("https://nexus.playcourt.id/repository/logee")
-                            credentials {
-                                username = System.getenv("NEXUS_USERNAME")
-                                password = System.getenv("NEXUS_PASSWORD")
                             }
                         }
                     }
